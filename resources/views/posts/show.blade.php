@@ -11,15 +11,14 @@
         </h1>
     </x-slot>
     <div class="content">
-        @foreach($posts as $post)
         <div class="title">
-            <a href="posts/{{$post->id}}">{{$post->title}}</a>
+            {{$post->title}}
         </div>
         <div class="body">
             {{$post->body}}
         </div>
-        @endforeach
     </div>
+    <a href="/index">戻る</a>
     
 </x-app-layout>
     
