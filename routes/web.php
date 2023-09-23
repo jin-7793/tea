@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Route::get('/test',[PostController::class,'test']);
 Route::get('/index',[PostController::class,'index']);
+Route::get('/posts/{post}',[PostController::class,'show']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
