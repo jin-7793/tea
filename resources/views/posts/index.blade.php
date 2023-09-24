@@ -10,6 +10,7 @@
             24SNS
         </h1>
     </x-slot>
+    <a href="/create">create</a>
     <div class="content">
         @foreach($posts as $post)
         <div class="title">
