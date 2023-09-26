@@ -5,29 +5,31 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 </head>
 <x-app-layout>
-    <x-slot name="header">
-        <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+    <div class="min-h-screen bg-green-300">
+        <h1 class="font-semibold text-xl text-gray-800 leading-tight ml-8">
             24SNS
         </h1>
-    </x-slot>
-    <form action="{{route('post.store')}}" method="post">
-        @csrf
-        <div class="content">
-            <x-primary-button class="store">
-                store
-            </x-primary-button>
-            <div class="title">
-                title:<br>
-                <input type="text" name="post[title]" placeholder="タイトル" />
-            </div>
-            
-            <div class="body"><!--今のままだとBodyがフォームの下部にいってしまうので修正が必要。-->
-                Body:<br>
-                <textarea name="post[body]" placeholder="今日のご飯は何ですか?" cols="100" rows="10"></textarea> 
-            </div>
-        </div>
-    </form>
-    <a href="/index">戻る</a>
     
+        <form action="/posts" method="post">
+            @csrf
+            <div class="content">
+                <x-primary-button class="store bg-red-500 ml-8 mt-8">
+                    store
+                </x-primary-button>
+                <div class="m-8">
+                    title:<br>
+                    <input type="text" name="post[title]" placeholder="タイトル" value="{{ old('post.title')}}" />
+                    <p class="title_error text-red-600">{{$errors->first('post.title')}}</p>
+                </div>
+            
+                <div class="m-8">
+                    Body:<br>
+                    <textarea name="post[body]" placeholder="今日のご飯は何ですか?" cols="100" rows="10">{{old('post.body')}}</textarea>
+                    <p class="body_error text-red-600">{{$errors ->first('post.body')}}</p>
+                </div>
+            </div>
+        </form>
+        <a href="/index" class="underline decoration-blue-500 text-blue-500 ml-8">戻る</a>
+    </div>
 </x-app-layout>
     
