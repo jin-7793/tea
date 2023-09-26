@@ -6,21 +6,22 @@
 </head>
 <x-app-layout>
     <x-slot name="header">
-        <h1 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h1 class="name">
             24SNS
         </h1>
+        <a class="bg-blue-900" href="/create">create</a>
     </x-slot>
-    <a href="/create">create</a>
-    <div class="content">
+    <div class="bg-blue-400">
         @foreach($posts as $post)
-        <div class="title">
-            <a href="posts/{{$post->id}}">{{$post->title}}</a>
-        </div>
-        <div class="body">
-            {{$post->body}}
-        </div>
+            <div class="underline decoration-blue-100">
+                <div class="title">
+                    <a href="posts/{{$post->id}}">{{$post->title}}</a>
+                </div>
+                <div class="body">
+                    {{$post->body}}
+                </div>
+            </div>
         @endforeach
     </div>
-    
 </x-app-layout>
     
