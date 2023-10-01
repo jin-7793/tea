@@ -9,11 +9,11 @@
         <h1 class="name">
             24SNS
         </h1>
-        <a class="bg-blue-900" href="/create">create</a>
+        <a　href="/create">create</a>
     </x-slot>
-    <div class="bg-blue-400">
+    <div class="posts">
         @foreach($posts as $post)
-            <div class="underline decoration-blue-100">
+            <div class="post">
                 <div class="title">
                     <a href="posts/{{$post->id}}">{{$post->title}}</a>
                 </div>

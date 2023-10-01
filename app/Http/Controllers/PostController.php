@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Post;
-use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -13,7 +13,7 @@ class PostController extends Controller
     
     public function index(Post $post){
         
-        return view('posts/index')->with(['posts'=> $post -> get()]);
+        return view('posts/index')->with(['posts'=> $post ->orderBy('updated_at','DESC')->get()]);
     } 
     
     public function show(Post $post){
@@ -26,7 +26,7 @@ class PostController extends Controller
         return view('posts/create');
     }
     
-    public function store(PostRequest $request,Post $post){
+    public function store(Request $request,Post $post){
         $input=$request['post'];
         $post->fill($input)->save();
         
