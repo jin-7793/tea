@@ -11,8 +11,8 @@ class Post extends Model
     
     protected $fillable=[
         'title',
-        'body'
+        'body',
+        'expired_at'
         ];
-        
     
 }

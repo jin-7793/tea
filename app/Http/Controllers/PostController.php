@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -29,6 +30,7 @@ class PostController extends Controller
     public function store(Request $request,Post $post){
         $input=$request['post'];
         $post->fill($input)->save();
+        $post->update(['expired_at'=>Carbon::now()->addHours(24)]);
         
         return redirect('/index');
     }
