@@ -9,7 +9,7 @@
         <h1 class="name">
             24SNS
         </h1>
-        <a　href="/create">create</a>
+        <a href="/create">create</a>
     </x-slot>
     <div class="posts">
         @foreach($posts as $post)
