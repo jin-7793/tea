@@ -9,16 +9,22 @@
         <h1 class="name">
             24SNS
         </h1>
-        <a href="/create">create</a>
     </x-slot>
+    <a href="/create" class="ml-2 mt-2 border-2 bg-red-500">create</a>
     <div class="posts">
         @foreach($posts as $post)
-            <div class="post">
-                <div class="title">
-                    <a href="posts/{{$post->id}}">{{$post->title}}</a>
+            <div class="post mt-4 p-8 bg-white w-full rounded-2xl">
+                <div class="title text-lg font-semibold">
+                    <font size="5">
+                        <a href="posts/{{$post->id}}">{{$post->title}}</a>
+                    </font>
                 </div>
-                <div class="body">
+                <hr class="w-full">
+                <div class="body mt-2">
                     {{$post->body}}
+                    <div class="text-xs text-gray-400 text-right">
+                        有効期限:{{$post->expired_at}}
+                    </div>
                 </div>
             </div>
         @endforeach
