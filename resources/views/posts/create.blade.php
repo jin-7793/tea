@@ -10,7 +10,7 @@
             24SNS
         </h1>
     
-        <form action="/posts" method="post">
+        <form action="{{route('store')}}" method="post">
             @csrf
             <div class="content">
                 <x-primary-button class="store bg-red-500 ml-8 mt-8">

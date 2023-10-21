@@ -18,6 +18,7 @@
                     <font size="5">
                         <a href="posts/{{$post->id}}">{{$post->title}}</a>
                     </font>
+                    <a>投稿者:{{$post->user->name}}</a>
                 </div>
                 <hr class="w-full">
                 <div class="body mt-2">
@@ -25,6 +26,8 @@
                     <div class="text-xs text-gray-400 text-right">
                         有効期限:{{$post->expired_at}}
                     </div>
+                    <a href='/like/{{$post->id}}'>いいね</a>
+                    <a>{{$post->like->count()}}</a>
                 </div>
             </div>
         @endforeach

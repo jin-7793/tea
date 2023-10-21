@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\LikeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,11 +19,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test',[PostController::class,'test']);
-Route::get('/index',[PostController::class,'index']);
-Route::post('/posts',[PostController::class,'store'])->name('post.store');
-Route::get('/posts/{post}',[PostController::class,'show']);
-Route::get('/create',[PostController::class,'create']);
+Route::middleware(['auth'])->group(function(){
+    Route::get('/index',[PostController::class,'index'])->name('index');
+    Route::get('/posts/like/{post}',[PostController::class,'like'])->name('like');
+    Route::post('/posts',[PostController::class,'store'])->name('store');
+    Route::get('/posts/{post}',[PostController::class,'show'])->name('show');
+    Route::get('/create',[PostController::class,'create'])->name('create');
+    Route::get('/like/{post}',[LikeController::class,'like'])->name('like');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
