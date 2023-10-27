@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Like;
 use Carbon\Carbon;
 
 class PostController extends Controller
@@ -28,11 +29,19 @@ class PostController extends Controller
         return view('posts/create');
     }
     
-    public function store(Request $request,Post $post){
+    public function store(PostRequest $request,Post $post){
         
         $input=$request['post']+['user_id'=>auth()->id()]+['expired_at'=>Carbon::now()->addHours(24)];
         $post->fill($input)->save();
         
         return redirect('/index');
+    }
+    
+    public function delete(Post $post)
+    {
+        $post->like()->delete();
+        $post->delete();
+        return redirect('/index');
+        
     }
 }

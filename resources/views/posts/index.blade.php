@@ -28,9 +28,24 @@
                     </div>
                     <a href='/like/{{$post->id}}'>いいね</a>
                     <a>{{$post->like->count()}}</a>
+                        <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" onclick="deletePost({{$post->id}})">
+                            delete
+                        </button>
+                    </form>
                 </div>
             </div>
         @endforeach
     </div>
+    <script>
+    function deletePost(id){
+        if (confirm('削除すると復元できません。\n　本当に削除しますか？')){
+            document.getElementById(`form_${id}`).submit();
+            
+        }
+        
+    }
+    </script>
 </x-app-layout>
-    
