@@ -11,6 +11,13 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                 </div>
+                <div class="p-6 text-gray-900">
+                    <a href="{{route('index')}}">
+                        <x-primary-button class="store bg-red-500 ml-8 mt-8">
+                            タイムラインへ移動
+                        </x-primary-button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

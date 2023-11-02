@@ -21,4 +21,11 @@ class LikeController extends Controller
         
         return redirect('/index');
     }
+    
+    public function unlike(Post $post)
+    {
+        $post->like()->where('user_id','=',Auth::user()->id)->delete();
+        
+        return redirect('/index');
+    }
 }
