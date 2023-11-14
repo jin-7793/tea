@@ -31,7 +31,7 @@
                         有効期限:{{$post->expired_at}}
                     </div>
                     @if($post->like()->where('user_id','=',Auth::user()->id)->exists())
-                        {{--もうすでにいいねしている投稿だったら赤くいいねを赤く表示する--}}
+                        {{--もうすでにいいねしている投稿だったらいいねを赤く表示する--}}
                         <a href='/unlike/{{$post->id}}' class="ml-2 mt-2 border-2 bg-red-500">いいね</a>
                     @else
                     <a href='/like/{{$post->id}}'>いいね</a>
