@@ -9,25 +9,26 @@
             Feel Free!!
         </h1>
     
-    <form action="{{route('store')}}" method="post">
+    <form action="/posts/{{$post->id}}" method="post">
         @csrf
+        @method('PUT')
         <div class="content">
             <x-primary-button class="store bg-red-500 ml-8 mt-8">
-                store
+                update
             </x-primary-button>
             <div class="m-8">
                 Title:<br>
-                <input type="text" name="post[title]" placeholder="タイトル" value="{{ old('post.title')}}" />
+                <input type="text" name="post[title]" placeholder="タイトル" value="{{$post->title}}" />
                 <p class="title_error text-red-600">{{$errors->first('post.title')}}</p>
             </div>
             
             <div class="m-8">
                 Body:<br>
-                <textarea name="post[body]" placeholder="今日のご飯は何ですか?" cols="100" rows="7">{{old('post.body')}}</textarea>
+                <textarea name="post[body]" placeholder="今日のご飯は何ですか?" cols="100" rows="7">{{$post->body}}</textarea>
                 <p class="body_error text-red-600">{{$errors ->first('post.body')}}</p>
             </div>
         </div>
     </form>
-    <a href="/posts/index" class="underline decoration-blue-500 text-blue-500 ml-8">戻る</a>
+    <a href="/posts/index">戻る</a>
 </x-app-layout>
     
