@@ -19,13 +19,13 @@ class LikeController extends Controller
         $like->save();
         
         
-        return redirect('/posts/index');
+        return redirect('/index');
     }
     
     public function unlike(Post $post)
     {
         $post->like()->where('user_id','=',Auth::user()->id)->delete();
         
-        return redirect('/posts/index');
+        return redirect('/index');
     }
 }
