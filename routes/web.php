@@ -16,16 +16,18 @@ use App\Http\Controllers\LikeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('reception');
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/index',[PostController::class,'index'])->name('index');
+    Route::get('/posts/index',[PostController::class,'index'])->name('index');
     Route::post('/posts',[PostController::class,'store'])->name('store');
     Route::get('/posts/{post}',[PostController::class,'show'])->name('show');
     Route::get('/create',[PostController::class,'create'])->name('create');
     Route::get('/like/{post}',[LikeController::class,'like'])->name('like');
     Route::get('/unlike/{post}',[LikeController::class,'unlike'])->name('unlike');
+    Route::get('/posts/{post}/edit',[PostController::class,'edit'])->name('edit');
+    Route::put('/posts/{post}',[PostController::class,'update'])->name('update');
     Route::delete('/posts/{post}',[PostController::class,'delete'])->name('delete');
 });
 
