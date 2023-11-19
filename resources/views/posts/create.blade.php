@@ -28,6 +28,6 @@
             </div>
         </div>
     </form>
-    <a href="/posts/index" class="underline decoration-blue-500 text-blue-500 ml-8">戻る</a>
+     <a href="/posts/index" class="underline decoration-blue-500 text-blue-500 ml-8">戻る</a>
 </x-app-layout>
     

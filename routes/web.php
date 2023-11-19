@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/posts/index',[PostController::class,'index'])->name('index');
+    Route::get('posts/index',[PostController::class,'index'])->name('index');
     Route::post('/posts',[PostController::class,'store'])->name('store');
     Route::get('/posts/{post}',[PostController::class,'show'])->name('show');
     Route::get('/create',[PostController::class,'create'])->name('create');

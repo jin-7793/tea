@@ -21,7 +21,7 @@
             <div class="post mt-4 p-8 bg-white w-full rounded-2xl">
                 <div class="title text-lg font-semibold">
                     <font size="5">
-                        <a href="{{$post->id}}">{{$post->title}}</a>
+                         <a href="{{$post->id}}">{{$post->title}}</a>
                     </font>
                     <a>投稿者:{{$post->user->name}}</a>
                 </div>
@@ -43,6 +43,7 @@
                             有効期限:{{$post->expired_at}}
                         </div>
                     </div>
+                    
                     @if($post->user()->where('id','=',Auth::user()->id)->exists())
                         <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
                             @csrf
@@ -63,7 +64,6 @@
                 document.getElementById(`form_${id}`).submit();
             
             }
-        
         }
     </script>
     

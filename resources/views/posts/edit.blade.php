@@ -1,3 +1,4 @@
+
 <head>
     <meta charset="utf-8">
     <title>Feel Free!!</title>
@@ -8,7 +9,6 @@
         <h1 class="font-semibold text-xl text-gray-800 leading-tight ml-8">
             Feel Free!!
         </h1>
-    
     <form action="/posts/{{$post->id}}" method="post">
         @csrf
         @method('PUT')
@@ -21,7 +21,6 @@
                 <input type="text" name="post[title]" placeholder="タイトル" value="{{$post->title}}" />
                 <p class="title_error text-red-600">{{$errors->first('post.title')}}</p>
             </div>
-            
             <div class="m-8">
                 Body:<br>
                 <textarea name="post[body]" placeholder="今日のご飯は何ですか?" cols="100" rows="7">{{$post->body}}</textarea>
@@ -29,6 +28,5 @@
             </div>
         </div>
     </form>
-    <a href="/posts/index">戻る</a>
+    <a href="/posts/index" class="underline decoration-blue-500 text-blue-500 ml-8">戻る</a>
 </x-app-layout>
-    

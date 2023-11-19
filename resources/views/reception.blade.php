@@ -15,7 +15,7 @@
             Feel Free!! を始めよう!
         </div>
         <div class="flex">
-            @if (Route::has('login'))
+             @if (Route::has('login'))
                 @auth
                     <a href="{{ route('index') }}">
                         <x-primary-button class="bg-red-500 ml-8 mt-8">

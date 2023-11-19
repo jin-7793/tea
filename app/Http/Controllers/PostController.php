@@ -32,17 +32,17 @@ class PostController extends Controller
         
         return redirect('posts/index');
     }
-        
-    public function edit(Post $post)
+    
+     public function edit(Post $post)
     {
         return view('posts/edit')->with(['post'=>$post]);
     }
-    
+
     public function update(PostRequest $request,Post $post)
     {
         $input=$request['post']+['user_id'=>auth()->id()];
         $post->fill($input)->save();
-        
+
         return view('posts/show')->with(['post'=>$post]);
     }
     
