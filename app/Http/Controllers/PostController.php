@@ -51,6 +51,6 @@ class PostController extends Controller
         $post->like()->delete();
         $post->delete();
         return redirect('posts/index');
-        
     }
+
 }

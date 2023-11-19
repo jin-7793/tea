@@ -5,9 +5,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 </head>
 <x-app-layout>
-    <h1 class="font-semibold text-xl text-gray-800 leading-tight ml-8">
-        Feel Free!!
-    </h1>
+        <h1 class="font-semibold text-xl text-gray-800 leading-tight ml-8">
+            Feel Free!!
+        </h1>
     
     <form action="{{route('store')}}" method="post">
         @csrf

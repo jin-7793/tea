@@ -10,6 +10,7 @@
             Feel Free!!
         </h1>
     </x-slot>
+    
     <a href="/create">
         <x-primary-button class="create bg-red-500 ml-8 mt-4">
             create
@@ -42,7 +43,8 @@
                             有効期限:{{$post->expired_at}}
                         </div>
                     </div>
-                     @if($post->user()->where('id','=',Auth::user()->id)->exists())
+                    
+                    @if($post->user()->where('id','=',Auth::user()->id)->exists())
                         <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
                             @csrf
                             @method('DELETE')
@@ -55,13 +57,14 @@
             </div>
         @endforeach
     </div>
+    
     <script>
-        function deletePost(id)
-        {
-            if (confirm('削除すると復元できません。\n　本当に削除しますか？'))
-            {
+        function deletePost(id){
+            if (confirm('削除すると復元できません。\n　本当に削除しますか？')){
                 document.getElementById(`form_${id}`).submit();
+            
             }
         }
     </script>
+    
 </x-app-layout>
