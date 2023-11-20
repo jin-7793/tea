@@ -31,6 +31,15 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/posts/{post}',[PostController::class,'delete'])->name('delete');
 });
 
+Route::middleware(['auth'])->group(function(){
+    Route::get('/like/{post}',[LikeController::class,'like'])->name('like');
+    Route::get('/unlike/{post}',[LikeController::class,'unlike'])->name('unlike');
+    Route::get('/like_in_show/{post}',[LikeController::class,'like_in_show'])->name('like_in_show');
+    Route::get('/unlike_in_show/{post}',[LikeController::class,'unlike_in_show'])->name('unlike_in_show');
+
+
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

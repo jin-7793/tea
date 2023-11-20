@@ -6,7 +6,7 @@
 </head>
 <x-app-layout>
     <x-slot name="header">
-        <h1 class="name">
+        <h1 class="font-semibold text-xl text-gray-800 leading-tight">
             Feel Free!!
         </h1>
     </x-slot>
@@ -19,12 +19,26 @@
     <div class="posts">
         @foreach($posts as $post)
             <div class="post mt-4 p-8 bg-white w-full rounded-2xl">
-                <div class="title text-lg font-semibold">
-                    <font size="5">
-                         <a href="{{$post->id}}">{{$post->title}}</a>
-                    </font>
-                    <a>投稿者:{{$post->user->name}}</a>
+                <div class="title text-lg font-semibold flex">
+                    <div class="flex-1">
+                        <font size="5">
+                             <a href="{{$post->id}}">{{$post->title}}</a>
+                        </font>
+                        <a>名前:{{$post->user->name}}</a>
+                    </div>
+                    <div class="delete_post text-xs text-gray-400 text-right flex-2">
+                        @if($post->user()->where('id','=',Auth::user()->id)->exists())
+                            <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" onclick="deletePost({{$post->id}})">
+                                    delete
+                                </button>
+                            </form>
+                        @endif
+                    </div>
                 </div>
+                
                 <hr class="w-full">
                 <div class="body mt-2">
                     {!! nl2br(e($post->body)) !!}
@@ -44,27 +58,15 @@
                         </div>
                     </div>
                     
-                    @if($post->user()->where('id','=',Auth::user()->id)->exists())
-                        <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" onclick="deletePost({{$post->id}})">
-                                delete
-                            </button>
-                        </form>
-                    @endif
                 </div>
             </div>
         @endforeach
     </div>
-    
-    <script>
-        function deletePost(id){
-            if (confirm('削除すると復元できません。\n　本当に削除しますか？')){
-                document.getElementById(`form_${id}`).submit();
-            
-            }
-        }
-    </script>
-    
 </x-app-layout>
+<script>
+    function deletePost(id){
+        if (confirm('削除すると復元できません。\n　本当に削除しますか？')){
+            document.getElementById(`form_${id}`).submit();
+        }
+    }
+</script>
