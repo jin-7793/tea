@@ -28,4 +28,22 @@ class LikeController extends Controller
         
         return redirect('/posts/index');
     }
+    
+        public function like_in_show(Post $post)
+    {
+        $like=new Like();
+        $like->post_id=$post->id;
+        $like->user_id=Auth::user()->id;
+        $like->save();
+        
+        
+        return view('posts/show')->with(['post'=>$post]);
+    }
+    
+    public function unlike_in_show(Post $post)
+    {
+        $post->like()->where('user_id','=',Auth::user()->id)->delete();
+        
+        return view('posts/show')->with(['post'=>$post]);
+    }
 }
