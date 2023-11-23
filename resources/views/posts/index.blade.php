@@ -62,6 +62,9 @@
             </div>
         @endforeach
     </div>
+    <div class="pagination mt-4">
+            {{$posts->links()}}
+    </div>
 </x-app-layout>
 <script>
     function deletePost(id){
