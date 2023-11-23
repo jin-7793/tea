@@ -49,7 +49,7 @@
             </form>
         @endif
     </div>
-    <a href="/posts/index" class="underline decoration-blue-500 text-blue-500 ml-8">戻る</a>
+    <button type="button" onclick="history.back()" class="underline decoration-blue-500 text-blue-500 ml-8">戻る</button>
 </x-app-layout>
 
 <script>

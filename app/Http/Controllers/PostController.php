@@ -12,7 +12,7 @@ class PostController extends Controller
 {
     public function index(Post $post)
     {
-        return view('posts/index')->with(['posts'=> $post ->orderBy('updated_at','DESC')->get()]);
+        return view('posts/index')->with(['posts'=> $post ->orderBy('updated_at','DESC')->paginate(10)]);
     } 
     
     public function show(Post $post)
